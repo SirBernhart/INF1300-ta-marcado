@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:ta_marcado/eventos.dart';
+import 'package:ta_marcado/evento.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoder/geocoder.dart';
 
@@ -34,7 +34,7 @@ class HomePageState extends State<HomePage> {
 }
 
 class DetalhesEvento extends StatefulWidget {
-  final Eventos _listaeventos;
+  final Evento _listaeventos;
   DetalhesEvento(this._listaeventos);
 
   @override
