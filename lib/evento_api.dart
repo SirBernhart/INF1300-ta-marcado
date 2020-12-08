@@ -27,14 +27,6 @@ class EventoApi {
         .forEach((cadaEvento) => eventos.add(Evento.fromJson(cadaEvento)));
     return eventos;
   }
-  /*final testeEvento = Evento(
-      id: 0,
-      nome: 'Testevento',
-      descricao: 'Testetestestes',
-      local: 'testelocal',
-      data: '9999-12-30 10:00:00.999');
-
-  await inserirEvento(testeEvento);*/
 
   Future<List<Evento>> getEventos() async {
     final Database db = await new DatabaseManager().initDatabase();
