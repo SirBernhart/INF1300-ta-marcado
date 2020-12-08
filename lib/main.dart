@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:ta_marcado/eventos.dart';
+import 'package:ta_marcado/evento.dart';
 import 'package:ta_marcado/evento_api.dart';
 import 'package:ta_marcado/detalhesEvento.dart';
 import 'package:swipedetector/swipedetector.dart';
 import 'createEventPage.dart';
+import 'dart:async';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
+import 'evento.dart';
 
 void main() {
   runApp(MyApp());
@@ -59,7 +63,7 @@ class EventoWidget extends StatefulWidget {
 
 class _EventoWidgetState extends State<EventoWidget> {
   EventoApi _api = new EventoApi();
-  List<Eventos> _listaeventos;
+  List<Evento> _listaeventos;
 
   @override
   void initState() {
@@ -75,7 +79,7 @@ class _EventoWidgetState extends State<EventoWidget> {
           : ListView.builder(
               itemCount: _listaeventos.length,
               itemBuilder: (BuildContext context, int index) {
-                Eventos evento = _listaeventos[index];
+                Evento evento = _listaeventos[index];
 
                 // return SwipeDetector(
                 //   onSwipeLeft: () {
