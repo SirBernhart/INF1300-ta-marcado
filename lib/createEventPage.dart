@@ -1,4 +1,11 @@
+import 'dart:html';
+import 'package:ta_marcado/evento_api.dart';
+import 'evento.dart';
+import 'databaseManager.dart';
 import 'package:flutter/material.dart';
+import 'package:ta_marcado/databaseManager.dart';
+import 'dart:async';
+import 'package:sqflite/sqflite.dart';
 
 class CreateEventPage extends StatefulWidget {
   @override
@@ -6,8 +13,10 @@ class CreateEventPage extends StatefulWidget {
 }
 
 class _CreateEventPageState extends State<CreateEventPage> {
-  String _title;
+  int _id;
+  String _name;
   String _description;
+  String _local;
   DateTime _date;
 
   Widget _backButton() {
@@ -114,9 +123,27 @@ class _CreateEventPageState extends State<CreateEventPage> {
     );
   }
 
+  getNextEventId() async {
+    List<Evento> eventos = await new EventoApi().getEventos();
+
+    int largestId = -1;
+    for (int i = 0; i < eventos.length; ++i) {
+      if (eventos[i].id > largestId) largestId = eventos[i].id;
+    }
+    return largestId + 1;
+  }
+
   Widget _submitButton() {
     return GestureDetector(
         onTap: () {
+          _id = getNextEventId();
+          Evento novoEvento = new Evento();
+          novoEvento.id = _id;
+          novoEvento.nome = _name;
+          novoEvento.descricao = _description;
+          novoEvento.local = _local;
+          novoEvento.data = _date.toIso8601String();
+
           Navigator.pop(context);
         },
         child: Container(
