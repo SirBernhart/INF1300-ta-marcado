@@ -5,10 +5,6 @@ import 'dart:async';
 import 'package:sqflite/sqflite.dart';
 
 class EventoApi {
-  Future<dynamic> _get() async {
-    return jsonDecode(jsonString);
-  }
-
   Future<void> inserirEvento(Evento evento) async {
     final Database db = await new DatabaseManager().initDatabase();
 
@@ -18,14 +14,6 @@ class EventoApi {
       conflictAlgorithm: ConflictAlgorithm.ignore,
     );
     printEventos();
-  }
-
-  Future<List<Evento>> loadJsonFromApi() async {
-    List<dynamic> responseJson = await _get();
-    List<Evento> eventos = new List();
-    responseJson
-        .forEach((cadaEvento) => eventos.add(Evento.fromJson(cadaEvento)));
-    return eventos;
   }
 
   Future<List<Evento>> getEventos() async {
@@ -54,26 +42,4 @@ class EventoApi {
       print(listEventos[i].data);
     }
   }
-
-  String jsonString = "[" +
-      "{" +
-      "\"descricao\":\"Evento musical\"," +
-      "\"nome\":\"Barzinho\"," +
-      "\"local\":\"Leblon\"" +
-      "}," +
-      "{" +
-      "\"descricao\":\"Festa\"," +
-      "\"nome\":\"Kriok\"," +
-      "\"local\":\"Ipanema\"" +
-      "}," +
-      "{" +
-      "\"descricao\":\"Show\"," +
-      "\"nome\":\"RiR\"," +
-      "\"local\":\"Recreio\"" +
-      "}," +
-      "{" +
-      "\"descricao\":\"Encontro\"," +
-      "\"nome\":\"Fã clube\"," +
-      "\"local\":\"Botafogo\"" +
-      "}]";
 }
