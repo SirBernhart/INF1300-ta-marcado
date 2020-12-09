@@ -169,7 +169,7 @@ class _EventoWidgetState extends State<EventoWidget> {
   }
 
   void getEventos() async {
-    _listaeventos = await _api.loadJsonFromApi();
+    _listaeventos = await _api.getEventos();
     setState(() {});
   }
 }
