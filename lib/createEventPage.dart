@@ -160,14 +160,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
   Widget _submitButton() {
     return GestureDetector(
         onTap: () {
-          _id = getNextEventId();
-          Evento novoEvento = new Evento();
-          novoEvento.id = _id;
-          novoEvento.nome = _name;
-          novoEvento.descricao = _description;
-          novoEvento.local = _local;
-          novoEvento.data = _date.toIso8601String();
-
+          criarNovoEvento();
           Navigator.pop(context);
         },
         child: Container(
