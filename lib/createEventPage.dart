@@ -1,4 +1,3 @@
-import 'dart:html';
 import 'package:ta_marcado/evento_api.dart';
 import 'evento.dart';
 import 'databaseManager.dart';
