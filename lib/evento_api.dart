@@ -44,6 +44,17 @@ class EventoApi {
     });
   }
 
+  void printEventos() async {
+    List<Evento> listEventos = await getEventos();
+    for (int i = 0; i < listEventos.length; i++) {
+      print(listEventos[i].id.toString());
+      print(listEventos[i].nome);
+      print(listEventos[i].descricao);
+      print(listEventos[i].local);
+      print(listEventos[i].data);
+    }
+  }
+
   String jsonString = "[" +
       "{" +
       "\"descricao\":\"Evento musical\"," +
@@ -65,11 +76,4 @@ class EventoApi {
       "\"nome\":\"Fã clube\"," +
       "\"local\":\"Botafogo\"" +
       "}]";
-
-  void printEventos() async {
-    List<Evento> listEventos = await getEventos();
-    for (int i = 0; i < listEventos.length; i++) {
-      print(listEventos[i].nome);
-    }
-  }
 }
