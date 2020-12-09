@@ -144,6 +144,19 @@ class _CreateEventPageState extends State<CreateEventPage> {
     return largestId + 1;
   }
 
+  void criarNovoEvento() async {
+    _id = await getNextEventId();
+    final Evento novoEvento = Evento(
+      id: _id,
+      nome: _name,
+      descricao: _description,
+      local: _local,
+      data: _date.toIso8601String(),
+    );
+
+    new EventoApi().inserirEvento(novoEvento);
+  }
+
   Widget _submitButton() {
     return GestureDetector(
         onTap: () {
