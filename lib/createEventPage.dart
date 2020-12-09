@@ -18,6 +18,9 @@ class _CreateEventPageState extends State<CreateEventPage> {
   String _local;
   DateTime _date;
 
+  TextEditingController nameController = new TextEditingController();
+  TextEditingController descriptionController = new TextEditingController();
+
   Widget _backButton() {
     return InkWell(
       onTap: () {
@@ -38,6 +41,10 @@ class _CreateEventPageState extends State<CreateEventPage> {
     );
   }
 
+  Function updateName(String newName) {
+    _name = newName;
+  }
+
   Widget _singleLineInputField(String title, int maxLenght) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 15),
@@ -52,6 +59,8 @@ class _CreateEventPageState extends State<CreateEventPage> {
             height: 5,
           ),
           TextField(
+              controller: nameController,
+              onChanged: (name) => _name = nameController.text,
               maxLength: maxLenght,
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
@@ -77,6 +86,9 @@ class _CreateEventPageState extends State<CreateEventPage> {
             height: 5,
           ),
           TextField(
+              controller: descriptionController,
+              onChanged: (description) =>
+                  _description = descriptionController.text,
               maxLines: null,
               keyboardType: TextInputType.multiline,
               style: TextStyle(color: Colors.white),
