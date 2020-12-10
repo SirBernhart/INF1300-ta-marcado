@@ -68,7 +68,7 @@ class _DetalhesEventoState extends State<DetalhesEvento> {
     return Container(
         color: Colors.blueGrey,
         child: Card(
-            color: Colors.blue,
+            color: Colors.blueGrey,
             margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
