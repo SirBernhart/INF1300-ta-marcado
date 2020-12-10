@@ -17,8 +17,10 @@ class _CreateEventPageState extends State<CreateEventPage> {
   String _description;
   String _local;
   DateTime _date;
+  String _address;
 
   TextEditingController nameController = new TextEditingController();
+  TextEditingController addressController = new TextEditingController();
   TextEditingController descriptionController = new TextEditingController();
 
   Widget _backButton() {
@@ -61,6 +63,33 @@ class _CreateEventPageState extends State<CreateEventPage> {
           TextField(
               controller: nameController,
               onChanged: (name) => _name = nameController.text,
+              maxLength: maxLenght,
+              style: TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  fillColor: Colors.blueGrey,
+                  filled: true))
+        ],
+      ),
+    );
+  }
+
+  Widget _singleLineInputFieldAddress(String title, int maxLenght) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            title,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          TextField(
+              controller: addressController,
+              onChanged: (address) => _address = addressController.text,
               maxLength: maxLenght,
               style: TextStyle(color: Colors.white),
               decoration: InputDecoration(
@@ -150,7 +179,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
       id: _id,
       nome: _name,
       descricao: _description,
-      local: _local,
+      local: _address,
       data: _date.toIso8601String(),
     );
 
@@ -209,6 +238,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
                       children: <Widget>[
                         _singleLineInputField('Nome do evento', 40),
                         _multiLineInputField('Descrição'),
+                        _singleLineInputFieldAddress('Endereço do evento', 80),
                         _datePicker(),
                         _submitButton(),
                       ],
