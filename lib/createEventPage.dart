@@ -192,26 +192,31 @@ class _CreateEventPageState extends State<CreateEventPage> {
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: Container(
-        height: height,
-        child: Stack(
-          children: <Widget>[
-            Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 80),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      _singleLineInputField('Nome do evento', 40),
-                      _multiLineInputField('Descrição'),
-                      _datePicker(),
-                      _submitButton(),
-                    ],
-                  ),
-                )),
-            Positioned(top: 30, left: 0, child: _backButton()),
-          ],
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).requestFocus(new FocusNode());
+        },
+        child: Container(
+          height: height,
+          child: Stack(
+            children: <Widget>[
+              Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 80),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        _singleLineInputField('Nome do evento', 40),
+                        _multiLineInputField('Descrição'),
+                        _datePicker(),
+                        _submitButton(),
+                      ],
+                    ),
+                  )),
+              Positioned(top: 30, left: 0, child: _backButton()),
+            ],
+          ),
         ),
       ),
     );
