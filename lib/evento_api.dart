@@ -18,6 +18,13 @@ class EventoApi {
     printEventos();
   }
 
+  removerEvento(int idEvento) async {
+    final Database db = await dbm.initDatabase();
+
+    await db.rawDelete("DELETE FROM eventos WHERE id = $idEvento");
+    printEventos();
+  }
+
   Future<List<Evento>> getEventos() async {
     final Database db = await dbm.initDatabase();
 
