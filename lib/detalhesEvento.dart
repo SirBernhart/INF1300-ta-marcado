@@ -109,7 +109,7 @@ class _DetalhesEventoState extends State<DetalhesEvento> {
                 Padding(
                     padding: EdgeInsets.only(bottom: 20.0),
                     child: Text(
-                      "${widget._listaeventos.descricao}",
+                      "${widget._listaeventos.nome}",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -118,7 +118,7 @@ class _DetalhesEventoState extends State<DetalhesEvento> {
                 Padding(
                     padding: EdgeInsets.only(bottom: 20.0),
                     child: Text(
-                      "Nome:" + " ${widget._listaeventos.nome}",
+                      "Descriçao:\n ${widget._listaeventos.descricao}",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
