@@ -67,98 +67,110 @@ class _DetalhesEventoState extends State<DetalhesEvento> {
   Widget buildDetails() {
     return Container(
         color: Colors.blueGrey,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Column(
-              mainAxisSize: MainAxisSize.min,
+        child: Card(
+            color: Colors.blue,
+            margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Padding(
-                    padding: EdgeInsets.only(top: 20.0, bottom: 30.0),
-                    child: ((() {
-                      if ("${widget._listaeventos.descricao}" == "Festa") {
-                        return CircleAvatar(
-                          radius: 40.0,
-                          backgroundColor: Colors.blueAccent,
-                          backgroundImage:
-                              AssetImage('images/party-popper-icon.png'),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.only(top: 20.0, bottom: 30.0),
+                        child: ((() {
+                          if ("${widget._listaeventos.descricao}" == "Festa") {
+                            return CircleAvatar(
+                              radius: 40.0,
+                              backgroundColor: Colors.blueAccent,
+                              backgroundImage:
+                                  AssetImage('images/party-popper-icon.png'),
+                            );
+                          } else if ("${widget._listaeventos.descricao}" ==
+                              "Evento musical") {
+                            return CircleAvatar(
+                              radius: 40.0,
+                              backgroundColor: Colors.blueAccent,
+                              backgroundImage:
+                                  AssetImage('images/music-icon.png'),
+                            );
+                          } else if ("${widget._listaeventos.descricao}" ==
+                              "Show") {
+                            return CircleAvatar(
+                              radius: 40.0,
+                              backgroundColor: Colors.blueAccent,
+                              backgroundImage:
+                                  AssetImage('images/concert-icon.png'),
+                            );
+                          }
+                          return CircleAvatar(
+                            radius: 30.0,
+                            backgroundColor: Colors.blueAccent,
+                            backgroundImage:
+                                AssetImage('images/gathering-icon.png'),
+                          );
+                        })())),
+                    Padding(
+                        padding: EdgeInsets.only(
+                            bottom: 20.0, right: 15.0, left: 15.0),
+                        child: Text(
+                          "${widget._listaeventos.nome}",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30.0),
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(
+                            bottom: 20.0, right: 15.0, left: 15.0),
+                        child: Text(
+                          "Descriçao:\n ${widget._listaeventos.descricao}",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0),
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(
+                            bottom: 20.0, right: 15.0, left: 15.0),
+                        child: Text(
+                          "Local:" + " ${widget._listaeventos.local}",
+                          style: TextStyle(
+                              color: Colors.yellowAccent,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0),
+                        )),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: 207,
+                      //height: MediaQuery.of(context).size.height,
+                      child: ((() {
+                        if ("${widget._listaeventos.local}" == "Leblon") {
+                          return HomePage(
+                            markerLocation:
+                                const LatLng(-22.984052, -43.223129),
+                          );
+                        } else if ("${widget._listaeventos.local}" ==
+                            "Ipanema") {
+                          return HomePage(
+                            markerLocation:
+                                const LatLng(-22.984641, -43.198566),
+                          );
+                        } else if ("${widget._listaeventos.local}" ==
+                            "Botafogo") {
+                          return HomePage(
+                            markerLocation:
+                                const LatLng(-22.950951, -43.180969),
+                          );
+                        }
+                        return HomePage(
+                          markerLocation: const LatLng(-22.980473, -43.406923),
                         );
-                      } else if ("${widget._listaeventos.descricao}" ==
-                          "Evento musical") {
-                        return CircleAvatar(
-                          radius: 40.0,
-                          backgroundColor: Colors.blueAccent,
-                          backgroundImage: AssetImage('images/music-icon.png'),
-                        );
-                      } else if ("${widget._listaeventos.descricao}" ==
-                          "Show") {
-                        return CircleAvatar(
-                          radius: 40.0,
-                          backgroundColor: Colors.blueAccent,
-                          backgroundImage:
-                              AssetImage('images/concert-icon.png'),
-                        );
-                      }
-                      return CircleAvatar(
-                        radius: 40.0,
-                        backgroundColor: Colors.blueAccent,
-                        backgroundImage:
-                            AssetImage('images/gathering-icon.png'),
-                      );
-                    })())),
-                Padding(
-                    padding: EdgeInsets.only(bottom: 20.0),
-                    child: Text(
-                      "${widget._listaeventos.nome}",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30.0),
-                    )),
-                Padding(
-                    padding: EdgeInsets.only(bottom: 20.0),
-                    child: Text(
-                      "Descriçao:\n ${widget._listaeventos.descricao}",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0),
-                    )),
-                Padding(
-                    padding: EdgeInsets.only(bottom: 20.0),
-                    child: Text(
-                      "Local:" + " ${widget._listaeventos.local}",
-                      style: TextStyle(
-                          color: Colors.yellowAccent,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0),
-                    )),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 407,
-                  // height: MediaQuery.of(context).size.height,
-                  child: ((() {
-                    if ("${widget._listaeventos.local}" == "Leblon") {
-                      return HomePage(
-                        markerLocation: const LatLng(-22.984052, -43.223129),
-                      );
-                    } else if ("${widget._listaeventos.local}" == "Ipanema") {
-                      return HomePage(
-                        markerLocation: const LatLng(-22.984641, -43.198566),
-                      );
-                    } else if ("${widget._listaeventos.local}" == "Botafogo") {
-                      return HomePage(
-                        markerLocation: const LatLng(-22.950951, -43.180969),
-                      );
-                    }
-                    return HomePage(
-                      markerLocation: const LatLng(-22.980473, -43.406923),
-                    );
-                  })()),
+                      })()),
+                    ),
+                  ],
                 ),
               ],
-            ),
-          ],
-        ));
+            )));
   }
 }
