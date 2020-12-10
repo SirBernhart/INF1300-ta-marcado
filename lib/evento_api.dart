@@ -5,8 +5,10 @@ import 'dart:async';
 import 'package:sqflite/sqflite.dart';
 
 class EventoApi {
+  DatabaseManager dbm = new DatabaseManager();
+
   Future<void> inserirEvento(Evento evento) async {
-    final Database db = await new DatabaseManager().initDatabase();
+    final Database db = await dbm.initDatabase();
 
     await db.insert(
       'eventos',
@@ -17,7 +19,7 @@ class EventoApi {
   }
 
   Future<List<Evento>> getEventos() async {
-    final Database db = await new DatabaseManager().initDatabase();
+    final Database db = await dbm.initDatabase();
 
     final List<Map<String, dynamic>> maps = await db.query('eventos');
 
