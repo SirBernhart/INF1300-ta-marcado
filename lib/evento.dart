@@ -3,8 +3,8 @@ class Evento {
   String nome;
   String descricao;
   String local;
-  String data;
 
+  String data;
   Evento({this.id, this.nome, this.descricao, this.local, this.data});
 
   Map<String, dynamic> toMap() {
