@@ -141,18 +141,18 @@ class _EventoWidgetState extends State<EventoWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Padding(
-                              padding:
-                                  EdgeInsets.only(bottom: 40.0, left: 15.0),
-                              child: Text("${evento.descricao} ",
+                              padding: EdgeInsets.only(bottom: 40.0),
+                              child: Text("${evento.nome} ",
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w600,
                                       color: Colors.black)),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(bottom: 40.0),
+                              padding: const EdgeInsets.only(
+                                  bottom: 40.0, left: 15.0, right: 15.0),
                               child: Text(
-                                "${evento.nome}" + " - " + "${evento.local}",
+                                "${evento.descricao}\n\nEndereço: ${evento.local}",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w600,
