@@ -16,13 +16,4 @@ class Evento {
       'data': data,
     };
   }
-
-  factory Evento.fromJson(Map<String, dynamic> json) {
-    return new Evento(
-        id: json['id'] as int,
-        nome: json['nome'] as String,
-        descricao: json['descricao'] as String,
-        local: json['local'] as String,
-        data: json['data'] as String);
-  }
 }
