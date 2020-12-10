@@ -152,7 +152,7 @@ class _EventoWidgetState extends State<EventoWidget> {
                               padding: const EdgeInsets.only(
                                   bottom: 40.0, left: 15.0, right: 15.0),
                               child: Text(
-                                "${evento.descricao}\n\nEndereço: ${evento.local}",
+                                "Endereço: ${evento.local}",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w600,
