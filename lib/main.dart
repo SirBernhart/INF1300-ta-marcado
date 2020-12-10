@@ -73,6 +73,7 @@ class _EventoWidgetState extends State<EventoWidget> {
 
   @override
   Widget build(BuildContext context) {
+    getEventos();
     return Center(
       child: _listaeventos == null
           ? CircularProgressIndicator()
