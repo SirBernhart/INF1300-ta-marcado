@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ta_marcado/evento.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoder/geocoder.dart';
+import 'package:ta_marcado/evento_api.dart';
 
 class HomePage extends StatefulWidget {
   final markerLocation;
@@ -45,7 +46,20 @@ class _DetalhesEventoState extends State<DetalhesEvento> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Detalhes")),
+      appBar: AppBar(
+        title: Text("Detalhes"),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.delete,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                new EventoApi().removerEvento(widget._listaeventos.id);
+                Navigator.pop(context);
+              })
+        ],
+      ),
       body: buildDetails(),
     );
   }
